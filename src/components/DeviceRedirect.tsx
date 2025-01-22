@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { isMobile } from '@/utils/deviceDetection'
+import { LineSeed } from "@/app/fonts";
 
 export default function DeviceRedirect() {
   const [showWarning, setShowWarning] = useState(false)
@@ -21,10 +22,10 @@ export default function DeviceRedirect() {
 
   return (
     <div className="fixed inset-0 bg-gray-900 text-white flex items-center justify-center p-8 z-50">
-      <div className="max-w-md text-center">
-        <h1 className="text-2xl font-bold mb-4">Mobile Only Application</h1>
-        <p className="mb-4">This application is designed for mobile devices only. Please access it from your smartphone or tablet.</p>
-        <p className="text-sm opacity-75">Current device width: {typeof window !== 'undefined' ? window.innerWidth : 0}px</p>
+      <div className={`max-w-md text-center ${LineSeed.className}`}>
+        <h1 className="text-2xl font-bold mb-4">สำหรับโทรศัพท์มือถือเท่านั้น</h1>
+        <p className="mb-4">เว็บไซต์นี้ออกแบบมาเพื่อรองรับบนโทรศัพท์มือถือเท่านั้น โปรดเปลี่ยนอุปกรณ์ของคุณเป็น แท็บแล็ต หรือ โทรศัพท์มือถือ</p>
+        <p className="text-sm opacity-75">ขนาดหน้าจอปัจจุบัน: {typeof window !== 'undefined' ? window.innerWidth : 0}px</p>
       </div>
     </div>
   )

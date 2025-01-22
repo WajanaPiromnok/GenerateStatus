@@ -215,8 +215,8 @@ export default function GenerateStatus() {
     return (
       <div className="fixed inset-0 bg-gray-900 text-white flex items-center justify-center">
         <div className="text-center p-6">
-          <h2 className="text-xl font-bold mb-4">Please Rotate Your Device</h2>
-          <p>This application works best in portrait mode.</p>
+          <h2 className={`text-xl font-bold mb-4 ${LineSeed.className}`}>โปรดหมุนโทรศัพท์</h2>
+          <p>เว็บไซต์นี้รองรับการเล่นผ่านแนวตั้งเท่านั้น</p>
         </div>
       </div>
     );
