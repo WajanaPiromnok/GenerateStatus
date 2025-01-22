@@ -10,7 +10,7 @@ export default function DeviceRedirect() {
   useEffect(() => {
     // Check device type on component mount and window resize
     const handleResize = () => {
-      setShowWarning(isMobile())
+      setShowWarning(!isMobile())
     }
 
     handleResize()
