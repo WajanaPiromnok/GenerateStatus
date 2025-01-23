@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import DownloadNotification from "./DownloadNotification";
-import StatusImage from "./StatusImage";
+import DownloadNotification from "./downloadNotification";
+import StatusImage from "./statusImage";
 import { isMobile } from "@/utils/deviceDetection";
 import { LineSeed } from "@/app/fonts";
 import Download from "./svg/Download";
 import Gift from "./svg/Gift";
-import Logo from "./Logo"
+import Logo from "./logo";
 
 // Define types for our data structures
 type RelationshipStatus =
@@ -215,7 +215,9 @@ export default function GenerateStatus() {
     return (
       <div className="fixed inset-0 bg-gray-900 text-white flex items-center justify-center">
         <div className="text-center p-6">
-          <h2 className={`text-xl font-bold mb-4 ${LineSeed.className}`}>โปรดหมุนโทรศัพท์</h2>
+          <h2 className={`text-xl font-bold mb-4 ${LineSeed.className}`}>
+            โปรดหมุนโทรศัพท์
+          </h2>
           <p>เว็บไซต์นี้รองรับการเล่นผ่านแนวตั้งเท่านั้น</p>
         </div>
       </div>
@@ -228,18 +230,17 @@ export default function GenerateStatus() {
         show={showNotification}
         onClose={() => setShowNotification(false)}
       />
-                  <div className="flex justify-between items-center mb-2 mt-4">
-              <div>
-                <Logo />
-              </div>
-            </div>
+      <div className="flex justify-between items-center mb-2 mt-4">
+        <div>
+          <Logo />
+        </div>
+      </div>
       <div className="flex-1 px-4 py-2 flex flex-col max-w-md mx-auto w-full">
         <div className="flex-1 overflow-auto">
           <div>
-
             {loading ? (
               <div className="flex justify-center items-center h-64">
-              <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-blue-500" />
+                <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-blue-500" />
               </div>
             ) : data ? (
               <div className="flex flex-col w-full">
@@ -262,26 +263,30 @@ export default function GenerateStatus() {
                       </button>
                     </div>
                   </div>
-                  <div className="w-full overflow-auto">
-                  <StatusImage
-                    imageSrc={getStatusImage(data.age, data.status)}
-                    alt={`Visualization for ${data.status} - ${
-                      getGeneration(data.age).label
-                    }`}
-                    name={data.name} // Add the name you want to display
-                  />
+                  <div className="w-full">
+                    <div className="relative w-full max-w-[70vw] shadow-lg mx-auto">
+                      <StatusImage
+                        imageSrc={getStatusImage(data.age, data.status)}
+                        alt={`Visualization for ${data.status} - ${
+                          getGeneration(data.age).label
+                        }`}
+                        name={data.name} // Add the name you want to display
+                      />
+                    </div>
                   </div>
-                  <div className="pb-2">
-                    <button
-                      className={`w-full inline-flex items-center justify-center bg-white iphonese:p-2 p-3 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-200 p-2 ${LineSeed.className}`}
-                    >
-                      <Gift className="w-6 h-6 ml-2" />
-                      <p
-                        className={`text-sm text-new-pink  ml-2 mr-2 ${LineSeed.className}`}
+                  <div className="pb-2 flex justify-center">
+                    <div className="w-full max-w-[70vw] iphonese:max-w-[70vw] iphone12pro:max-w-[70vw] iphonexr:max-w-[70vw] ipadmini:max-w-[60vw] ipadpro:max-w-[50vw]">
+                      <button
+                        className={`w-full inline-flex items-center justify-center bg-white iphonese:p-2 p-3 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-200 ${LineSeed.className}`}
                       >
-                        รับคูปอง
-                      </p>
-                    </button>
+                        <Gift className="w-6 h-6 ml-2" />
+                        <p
+                          className={`text-sm text-new-pink ml-2 mr-2 ${LineSeed.className}`}
+                        >
+                          รับคูปอง
+                        </p>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>

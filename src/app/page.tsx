@@ -1,6 +1,6 @@
-import GenerateStatus from '@/components/GenerateStatus'
-import DeviceRedirect from '@/components/DeviceRedirect'
-import GradientBackground from '../components/GradientBackground';
+import GenerateStatus from '@/components/generateStatus'
+import DeviceRedirect from '@/components/deviceRedirect'
+import GradientBackground from '../components/gradientBackground';
 
 export default function Home() {
   return (
