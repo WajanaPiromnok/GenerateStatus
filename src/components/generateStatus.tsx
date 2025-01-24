@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import DownloadNotification from "./downloadNotification";
 import StatusImage from "./statusImage";
-import { isMobile } from "@/utils/DeviceDetection";
+import { isMobile } from "@/utils/deviceDetection";
 import { LineSeed } from "@/app/fonts";
 import Download from "./svg/Download";
 import Gift from "./svg/Gift";
