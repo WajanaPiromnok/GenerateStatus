@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { isMobile } from '@/utils/deviceDetection'
+import { isMobile } from '@/utils/DeviceDetection'
 import { LineSeed } from "@/app/fonts";
 
 export default function DeviceRedirect() {
