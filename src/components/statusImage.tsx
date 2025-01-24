@@ -19,9 +19,9 @@ const StatusImage: React.FC<StatusImageProps> = ({
 
       {/* Custom Name Container */}
       {name && (
-        <div className="absolute iphonese:bottom-16 iphone12pro:bottom-20 iphonexr:bottom-20 iphone14promax:bottom-24 ipadmini:bottom-24 ipadair:bottom-24 ipadpro:bottom-24 pixel7:bottom-24 samsungs8plus:bottom-16 samsungzfold:bottom-20 zenbookfold:bottom-24 surfacepro7:bottom-24 bottom-24 left-0 right-0 text-center z-10">
+        <div className="absolute iphonese:bottom-16 iphone12pro:bottom-16 iphonexr:bottom-16 iphone14promax:bottom-16 ipadmini:bottom-24 ipadair:bottom-24 ipadpro:bottom-24 pixel7:bottom-16 samsungs8plus:bottom-12 samsungzfold:bottom-16 zenbookfold:bottom-24 surfacepro7:bottom-24 bottom-24 left-0 right-0 text-center z-10">
           <p
-            className={`text-white iphonese:text-xs iphone12pro:text-xs  iphonexr:text-sm iphone14promax:text-sm ipadmini:text-base ipadair:text-base ipadpro:text-base pixel7:text-sm samsungs8plus:text-xs samsungzfold:text-xs iphonese:pb-3 iphone12pro:pb-4 iphonexr:pb-2 ipadair:pb-6 ipadmini:pb-6 pixel7:pb-2 samsungs8plus:pb-6 zenbookfold:pb-6 surfacepro7:pb-6 text-xs ${LineSeed.className}`}
+            className={`text-white iphonese:text-xs iphone12pro:text-xs  iphonexr:text-sm iphone14promax:text-sm ipadmini:text-base ipadair:text-base ipadpro:text-base pixel7:text-sm samsungs8plus:text-xs samsungzfold:text-xs iphonese:pb-3 iphone12pro:pb-4 iphonexr:pb-5 iphone14promax:pb-6 ipadair:pb-6 ipadmini:pb-6 pixel7:pb-5 samsungs8plus:pb-6 samsungzfold:pb-1.5 zenbookfold:pb-6 surfacepro7:pb-6 text-xs ${LineSeed.className}`}
           >
             {name}
           </p>
