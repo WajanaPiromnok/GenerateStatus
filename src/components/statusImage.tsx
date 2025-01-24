@@ -25,6 +25,8 @@ const StatusImage: React.FC<StatusImageProps> = ({
           >
             {name}
           </p>
+          <div>
+            </div>
         </div>
       )}
     </div>
