@@ -1,6 +1,7 @@
 import GenerateStatus from '@/components/generateStatus'
 import DeviceRedirect from '@/components/deviceRedirect'
 import GradientBackground from '../components/gradientBackground';
+import TestGetData from '@/components/testGetData';
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <GradientBackground>
       <div className={`container mx-auto px-4`}>
         <DeviceRedirect />
+        <TestGetData />
         <GenerateStatus />
       </div>
       </GradientBackground>

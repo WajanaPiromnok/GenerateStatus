@@ -23,6 +23,10 @@ interface ApiResponse {
   name: string;
 }
 
+interface JsonData {
+  users: ApiResponse[];
+}
+
 interface AgeGeneration {
   min: number;
   max: number;
@@ -50,6 +54,11 @@ const AGE_GENERATIONS: Record<string, AgeGeneration> = {
     max: 55,
     label: "Adult",
   },
+  SENIOR: {
+    min: 56,
+    max: 100,
+    label: "Senior",
+  },
 };
 
 export default function GenerateStatus() {
@@ -73,13 +82,20 @@ export default function GenerateStatus() {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const response = await fetch("/api/status");
-      if (!response.ok) throw new Error("Failed to fetch data");
+      
+      setTimeout(() => {
+        const storedData = localStorage.getItem("jsonData");
+        if (!storedData) throw new Error("No data found in localStorage");
 
-      const data = await response.json();
-      console.log(data.name, data.age, data.status); // Log the data
+        const parsedData: JsonData = JSON.parse(storedData);
+        console.log("Fetched data from localStorage:", parsedData);
 
-      setData(data);
+        setData({
+          age: parsedData.users[0].age,
+          status: parsedData.users[0].status,
+          name: parsedData.users[0].name, // Just using the first user's name
+        });
+      }, 2000); // Delay for 2 seconds
     } catch (error) {
       console.error("Error fetching data:", error);
       setData({
@@ -291,7 +307,7 @@ export default function GenerateStatus() {
                 </div>
               </div>
             ) : (
-              <div className="text-center text-gray-600">No data available</div>
+              <div className={`text-center text-white ${LineSeed.className}`}>กำลังดาวน์โหลด</div>
             )}
           </div>
         </div>
