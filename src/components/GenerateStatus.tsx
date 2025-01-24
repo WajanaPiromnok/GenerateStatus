@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import DownloadNotification from "./DownloadNotification";
-import StatusImage from "./StatusImage";
+import DownloadNotification from "./downloadNotification";
+import StatusImage from "./statusImage";
 import { isMobile } from "@/utils/DeviceDetection";
 import { LineSeed } from "@/app/fonts";
 import Download from "./svg/Download";
 import Gift from "./svg/Gift";
-import Logo from "./Logo";
+import Logo from "./logo";
 
 // Define types for our data structures
 type RelationshipStatus =
