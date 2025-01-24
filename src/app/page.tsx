@@ -13,6 +13,7 @@ export default function Home() {
         <GenerateStatus />
       </div>
       </GradientBackground>
+      <p>hi</p>
     </main>
   )
 }
