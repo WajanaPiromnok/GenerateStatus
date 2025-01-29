@@ -296,7 +296,7 @@ export default function GenerateStatus() {
                         className={`w-full inline-flex items-center justify-center bg-white iphonese:p-2 p-3 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-200 ${LineSeed.className}`}
                         onClick={() =>
                           window.open(
-                            "http://chiselda.ddns.net:7000/api/verify?token=YWR2ZW50dXJlUHJpemU=",
+                            "https://chiselda.ddns.net/prize-token/prize-token/api/verify?token=YWR2ZW50dXJlUHJpemU=",
                             "_blank"
                           )
                         }
