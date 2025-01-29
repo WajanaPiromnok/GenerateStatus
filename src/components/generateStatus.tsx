@@ -127,6 +127,7 @@ export default function GenerateStatus() {
       "https://chiselda.ddns.net/prize-token/prize-token/api/verify?token=YWR2ZW50dXJlUHJpemU=",
       "_blank"
     );
+    console.log("open coupon")
   };
 
   // Function to get image path based on generation and status
