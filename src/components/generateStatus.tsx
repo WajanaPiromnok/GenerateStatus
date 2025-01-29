@@ -125,7 +125,6 @@ export default function GenerateStatus() {
   const handleOpenCoupon = () => {
     window.open(
       "https://chiselda.ddns.net/prize-token/prize-token/api/verify?token=YWR2ZW50dXJlUHJpemU=",
-      "_blank"
     );
     console.log("open coupon")
   };
