@@ -124,9 +124,9 @@ export default function GenerateStatus() {
 
   const handleOpenCoupon = () => {
     window.open(
-      "https://chiselda.ddns.net/prize-token/prize-token/api/verify?token=YWR2ZW50dXJlUHJpemU=",
+      "https://chiselda.ddns.net/prize-token/prize-token/api/verify?token=YWR2ZW50dXJlUHJpemU="
     );
-    console.log("open coupon")
+    console.log("open coupon");
   };
 
   // Function to get image path based on generation and status
@@ -286,6 +286,17 @@ export default function GenerateStatus() {
                       </button>
                     </div>
                   </div>
+                  <div className="w-full">
+                    <div className="relative w-full max-w-[70vw] shadow-lg mx-auto">
+                      <StatusImage
+                        imageSrc={getStatusImage(data.age, data.status)}
+                        alt={`Visualization for ${data.status} - ${
+                          getGeneration(data.age).label
+                        }`}
+                        name={data.name} // Add the name you want to display
+                      />
+                    </div>
+                  </div>
                   <div className="pb-2 flex justify-center">
                     <div className="w-full max-w-[70vw] iphonese:max-w-[70vw] iphone12pro:max-w-[70vw] iphonexr:max-w-[70vw] ipadmini:max-w-[60vw] ipadpro:max-w-[50vw]">
                       <button
@@ -301,18 +312,6 @@ export default function GenerateStatus() {
                       </button>
                     </div>
                   </div>
-                  <div className="w-full">
-                    <div className="relative w-full max-w-[70vw] shadow-lg mx-auto">
-                      <StatusImage
-                        imageSrc={getStatusImage(data.age, data.status)}
-                        alt={`Visualization for ${data.status} - ${
-                          getGeneration(data.age).label
-                        }`}
-                        name={data.name} // Add the name you want to display
-                      />
-                    </div>
-                  </div>
-
                 </div>
               </div>
             ) : (
