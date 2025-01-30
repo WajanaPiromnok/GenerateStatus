@@ -129,6 +129,10 @@ export default function GenerateStatus() {
     console.log("open coupon");
   };
 
+  const isMobileDevice = (): boolean => {
+    return /Mobi|Android|iPhone/i.test(navigator.userAgent);
+  };
+
   // Function to get image path based on generation and status
   const getStatusImage = (age: number, status: RelationshipStatus): string => {
     const generation = getGeneration(age);
@@ -234,6 +238,69 @@ export default function GenerateStatus() {
     }
   };
 
+  const handleDownloadToGallery = async (
+    age: number,
+    status: RelationshipStatus,
+    name: string
+  ) => {
+    const imageUrl = getStatusImage(age, status);
+
+    try {
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+      if (!ctx) throw new Error("Could not get canvas context");
+
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = imageUrl;
+      });
+
+      canvas.width = img.width;
+      canvas.height = img.height;
+      ctx.drawImage(img, 0, 0);
+
+      if (name) {
+        const fontSize = Math.max(14, Math.floor(canvas.height * 0.02));
+        await document.fonts.load(`${fontSize}px 'Line Seed'`);
+        ctx.font = `${fontSize}px 'Line Seed'`;
+        ctx.fillStyle = "#fff";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        const textY = canvas.height * 0.82;
+        ctx.strokeStyle = "rgba(0, 0, 0, 0.8)";
+        ctx.lineWidth = fontSize * 0.1;
+        ctx.strokeText(name, canvas.width / 2, textY);
+        ctx.fillText(name, canvas.width / 2, textY);
+      }
+
+      const dataUrl = canvas.toDataURL("image/jpeg");
+
+      const blob = await (await fetch(dataUrl)).blob();
+      const file = new File([blob], "image.jpg", { type: "image/jpeg" });
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: "Download Image",
+          text: "Save this image to your gallery!",
+        });
+      } else {
+        const link = document.createElement("a");
+        link.href = dataUrl;
+        link.download = "image.jpg";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    } catch (error) {
+      console.error("Error downloading image:", error);
+    }
+  };
+
   if (!isPortrait) {
     return (
       <div className="fixed inset-0 bg-gray-900 text-white flex items-center justify-center">
@@ -272,7 +339,13 @@ export default function GenerateStatus() {
                     <div>
                       <button
                         onClick={() =>
-                          handleDownload(data.age, data.status, data.name)
+                          isMobileDevice()
+                            ? handleDownloadToGallery(
+                                data.age,
+                                data.status,
+                                data.name
+                              )
+                            : handleDownload(data.age, data.status, data.name)
                         }
                         className="inline-flex items-center bg-white hover:bg-gray-100 iphonese:p-2 p-3 rounded-lg shadow-lg transition-all duration-200"
                         aria-label="Download image"
