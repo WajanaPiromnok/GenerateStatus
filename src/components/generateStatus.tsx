@@ -187,7 +187,7 @@ export default function GenerateStatus() {
       // Add the text if name is provided
       if (name) {
         // Ensure font is loaded
-        const fontSize = Math.max(14, Math.floor(canvas.height * 0.02)); // Scale font size with canvas height
+        const fontSize = Math.max(14, Math.floor(canvas.height * 0.0)); // Scale font size with canvas height
         await document.fonts.load(`${fontSize}px 'Line Seed'`);
         ctx.font = `${fontSize}px 'Line Seed'`;
 
@@ -270,13 +270,13 @@ export default function GenerateStatus() {
       ctx.drawImage(img, 0, 0);
 
       if (name) {
-        const fontSize = Math.max(14, Math.floor(canvas.height * 0.02));
+        const fontSize = Math.max(14, Math.floor(canvas.height * 0.025));
         await document.fonts.load(`${fontSize}px 'Line Seed'`);
         ctx.font = `${fontSize}px 'Line Seed'`;
         ctx.fillStyle = "#fff";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
-        const textY = canvas.height * 0.82;
+        const textY = canvas.height * 0.795;
         ctx.strokeStyle = "rgba(0, 0, 0, 0.8)";
         ctx.lineWidth = fontSize * 0.1;
         ctx.strokeText(name, canvas.width / 2, textY);
