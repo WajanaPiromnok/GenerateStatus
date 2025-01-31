@@ -5,6 +5,7 @@ import DownloadNotification from "./downloadNotification";
 import StatusImage from "./statusImage";
 import { isMobile } from "@/utils/deviceDetection";
 import { LineSeed } from "@/app/fonts";
+import { literata } from "@/app/fonts";
 import Download from "./svg/Download";
 import Gift from "./svg/Gift";
 import Logo from "./logo";
@@ -12,10 +13,10 @@ import Logo from "./logo";
 // Define types for our data structures
 type RelationshipStatus =
   | "single"
-  | "In a relationship"
+  | "in a relationship"
   | "married"
-  | "closed relationship"
-  | "it's complicated";
+  | "talking stage"
+  | "undisclosed";
 
 interface ApiResponse {
   age: number;
@@ -80,6 +81,11 @@ export default function GenerateStatus() {
 
   // Function to fetch data from your API
   const fetchData = async () => {
+    /* อย่าลืมเอาออก*/
+    /*const jsonSetData = JSON.stringify({
+      users: [{ name: "John Doe", age: 10, status: "undisclosed" }],});        
+    localStorage.setItem("jsonData", jsonSetData)*/
+    /* บรรทัดบน */
     try {
       setLoading(true);
 
@@ -100,7 +106,7 @@ export default function GenerateStatus() {
       console.error("Error fetching data:", error);
       setData({
         age: 25,
-        status: "In a relationship",
+        status: "in a relationship",
         name: "John Doe",
       });
     } finally {
@@ -140,12 +146,12 @@ export default function GenerateStatus() {
     console.log(
       `/images/${generation.label.toLowerCase()}/${status
         .toLowerCase()
-        .replace(" ", "-")}.jpg`
+        .replace(" ", "-")}.png`
     );
     // Replace these paths with your actual image paths
     return `/images/${generation.label.toLowerCase()}/${status
       .toLowerCase()
-      .replace(" ", "-")}.jpg`;
+      .replace(" ", "-")}.png`;
   };
   const handleDownload = async (
     age: number,
@@ -208,7 +214,7 @@ export default function GenerateStatus() {
           (blob) => {
             if (blob) resolve(blob);
           },
-          "image/jpeg",
+          "image/png",
           1.0
         );
       });
@@ -221,7 +227,7 @@ export default function GenerateStatus() {
       const generation = getGeneration(age).label.toLowerCase();
       const filename = `${generation}-${status
         .toLowerCase()
-        .replace(" ", "-")}.jpg`;
+        .replace(" ", "-")}.png`;
       link.download = filename;
 
       // Trigger download
@@ -277,10 +283,15 @@ export default function GenerateStatus() {
         ctx.fillText(name, canvas.width / 2, textY);
       }
 
-      const dataUrl = canvas.toDataURL("image/jpeg");
+      const dataUrl = canvas.toDataURL("image/png");
 
       const blob = await (await fetch(dataUrl)).blob();
-      const file = new File([blob], "image.jpg", { type: "image/jpeg" });
+      const generation = getGeneration(age).label.toLowerCase();
+      const file = new File(
+        [blob],
+        `${generation}-${status.toLowerCase().replace(" ", "-")}.png`,
+        { type: "image/png" }
+      );
 
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
@@ -289,9 +300,12 @@ export default function GenerateStatus() {
           text: "Save this image to your gallery!",
         });
       } else {
+        const generation = getGeneration(age).label.toLowerCase();
         const link = document.createElement("a");
         link.href = dataUrl;
-        link.download = "image.jpg";
+        link.download = `${generation}-${status
+          .toLowerCase()
+          .replace(" ", "-")}.png`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -347,14 +361,14 @@ export default function GenerateStatus() {
                               )
                             : handleDownload(data.age, data.status, data.name)
                         }
-                        className="inline-flex items-center bg-white hover:bg-gray-100 iphonese:p-2 p-3 rounded-lg shadow-lg transition-all duration-200"
+                        className="inline-flex items-center bg-dark-pink hover:bg-gray-100 iphonese:p-2 p-3 rounded-lg shadow-lg transition-all duration-200"
                         aria-label="Download image"
                       >
                         <Download className="w-6 h-6 ml-2" />
                         <p
-                          className={`text-sm text-gray-800 ml-2 mr-2 ${LineSeed.className}`}
+                          className={`text-sm text-white ml-2 mr-2 ${literata}`}
                         >
-                          บันทึกภาพนี้
+                          Save...
                         </p>
                       </button>
                     </div>
@@ -373,14 +387,14 @@ export default function GenerateStatus() {
                   <div className="pb-2 flex justify-center">
                     <div className="w-full max-w-[70vw] iphonese:max-w-[70vw] iphone12pro:max-w-[70vw] iphonexr:max-w-[70vw] ipadmini:max-w-[60vw] ipadpro:max-w-[50vw]">
                       <button
-                        className={`w-full inline-flex items-center justify-center bg-white iphonese:p-2 p-3 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-200 ${LineSeed.className}`}
+                        className={`w-full inline-flex items-center justify-center bg-dark-pink iphonese:p-2 p-3 rounded-lg shadow-lg hover:bg-gray-100 transition-all duration-200 ${literata.className}`}
                         onClick={handleOpenCoupon}
                       >
                         <Gift className="w-6 h-6 ml-2" />
                         <p
-                          className={`text-sm text-new-pink ml-2 mr-2 ${LineSeed.className}`}
+                          className={`text-sm text-white ml-2 mr-2 ${literata.className}`}
                         >
-                          รับคูปอง
+                          Coupon
                         </p>
                       </button>
                     </div>

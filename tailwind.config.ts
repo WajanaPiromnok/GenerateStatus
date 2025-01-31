@@ -12,6 +12,7 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
         'new-pink': '#FA67A0',
+        'dark-pink': '#F04392',
       },
       screens: {
         iphonese: "375px",
