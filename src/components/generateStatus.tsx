@@ -366,7 +366,7 @@ export default function GenerateStatus() {
                       >
                         <Download className="w-6 h-6 ml-2" />
                         <p
-                          className={`text-sm text-white ml-2 mr-2 ${literata}`}
+                          className={`text-sm text-white ml-2 mr-2 ${literata.className}`}
                         >
                           Save...
                         </p>
