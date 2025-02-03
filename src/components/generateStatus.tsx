@@ -21,7 +21,7 @@ type RelationshipStatus =
 interface ApiResponse {
   age: number;
   status: RelationshipStatus;
-  name: string;
+  nickname: string;
 }
 
 interface JsonData {
@@ -99,7 +99,7 @@ export default function GenerateStatus() {
         setData({
           age: parsedData.users[0].age,
           status: parsedData.users[0].status,
-          name: parsedData.users[0].name, // Just using the first user's name
+          name: parsedData.users[0].nickname, // Just using the first user's name
         });
       }, 2000); // Delay for 2 seconds
     } catch (error) {
@@ -107,7 +107,7 @@ export default function GenerateStatus() {
       setData({
         age: 25,
         status: "in a relationship",
-        name: "John Doe",
+        nickname: "John Doe",
       });
     } finally {
       setLoading(false);
