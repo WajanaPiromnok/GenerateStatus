@@ -99,7 +99,7 @@ export default function GenerateStatus() {
         setData({
           age: parsedData.users[0].age,
           status: parsedData.users[0].status,
-          name: parsedData.users[0].nickname, // Just using the first user's name
+          nickname: parsedData.users[0].nickname, // Just using the first user's name
         });
       }, 2000); // Delay for 2 seconds
     } catch (error) {
@@ -357,9 +357,9 @@ export default function GenerateStatus() {
                             ? handleDownloadToGallery(
                                 data.age,
                                 data.status,
-                                data.name
+                                data.nickname
                               )
-                            : handleDownload(data.age, data.status, data.name)
+                            : handleDownload(data.age, data.status, data.nickname)
                         }
                         className="inline-flex items-center bg-dark-pink hover:bg-gray-100 iphonese:p-2 p-3 rounded-lg shadow-lg transition-all duration-200"
                         aria-label="Download image"
@@ -380,7 +380,7 @@ export default function GenerateStatus() {
                         alt={`Visualization for ${data.status} - ${
                           getGeneration(data.age).label
                         }`}
-                        name={data.name} // Add the name you want to display
+                        name={data.nickname} // Add the name you want to display
                       />
                     </div>
                   </div>
