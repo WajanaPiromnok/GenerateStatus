@@ -310,6 +310,8 @@ export default function GenerateStatus() {
         link.click();
         document.body.removeChild(link);
       }
+
+      setShowNotification(true);
     } catch (error) {
       console.error("Error downloading image:", error);
     }
