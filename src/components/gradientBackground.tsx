@@ -6,7 +6,7 @@ interface GradientBackgroundProps {
 
 const GradientBackground: React.FC<GradientBackgroundProps> = ({ children }) => {
   return (
-    <div className="min-h-screen w-full bg-black fixed inset-0">
+    <div className="min-h-screen w-full bg-black fixed inset-0 overflow-auto">
       <div className="relative z-10">
         {children}
       </div>
